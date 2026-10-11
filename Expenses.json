@@ -1,0 +1,22 @@
+[
+    {
+        "Category": "food",
+        "Description": "burger",
+        "Amount": 100.0
+    },
+    {
+        "Category": "travel",
+        "Description": "bus",
+        "Amount": 10.0
+    },
+    {
+        "Category": "food",
+        "Description": "pizza",
+        "Amount": 10000.0
+    },
+    {
+        "Category": "shopping",
+        "Description": "clothes",
+        "Amount": 50000.0
+    }
+]
