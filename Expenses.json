@@ -1,28 +1,28 @@
 [
     {
+        "S_No": 1,
         "Category": "food",
         "Description": "burger",
         "Amount": 100.0
     },
     {
+        "S_No": 2,
         "Category": "travel",
         "Description": "bus",
         "Amount": 10.0
     },
     {
-        "Category": "food",
-        "Description": "pizza",
-        "Amount": 10000.0
-    },
-    {
-        "Category": "shopping",
-        "Description": "clothes",
-        "Amount": 50000.0
-    },
-    {
+        "S_No": 3,
         "Date": "2026-10-12",
         "Category": "food",
         "Description": "fries",
         "Amount": 200.0
+    },
+    {
+        "S_No": 4,
+        "Date": "2026-10-12",
+        "Category": "travel",
+        "Description": "metro",
+        "Amount": 40.0
     }
 ]

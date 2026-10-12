@@ -33,6 +33,8 @@ def save_expense(): #Function to save new expenses.
 # ============================================================
 
 def add_expense():  # Function which help user to add expenses.
+    S_no = len(total_expenses) + 1
+
     categories = ["travel","shopping","food","other"]
 
     while True:
@@ -42,7 +44,6 @@ def add_expense():  # Function which help user to add expenses.
             break
         except ValueError:
             print("Invalid Date format")
-            return False
 
     while True:
         category = input("Enter expense category (Food / Travel / Shopping / other):").strip().lower()
@@ -60,6 +61,7 @@ def add_expense():  # Function which help user to add expenses.
         print("Invalid Amount")
     else:
         single_expense = {
+            "S_No": S_no,
             "Date": parsed_date.isoformat(),
             "Category": category,
             "Description": description,
@@ -68,11 +70,13 @@ def add_expense():  # Function which help user to add expenses.
 
         total_expenses.append(single_expense)
         return True
+
+    save_expense()
     
 # =====================================================================
 
-def view_expense():  # Function which help user to view expenses.
-    headers = ["Date","Category","Description","Amount"]
+def expense_summary():  # Function which help user to view expenses summary.
+    headers = ["S_No","Date","Category","Description","Amount"]
     data = []
     
     if total_expenses == []:
@@ -80,6 +84,7 @@ def view_expense():  # Function which help user to view expenses.
     else:
         for i in total_expenses:
             item = (
+                i["S_No"],
                 i.get("Date", "N/A"),
                 i["Category"],
                 i["Description"],
@@ -90,6 +95,28 @@ def view_expense():  # Function which help user to view expenses.
 
 
 # =====================================================================
+
+def delete_expense():
+    while True:
+        try:
+            choice = int(input("Enter S.no which you want to delete:"))
+            break
+        except ValueError:
+            print("Invalid Choice")
+
+    for i in total_expenses:
+        if i["S_No"] == choice:
+            total_expenses.pop(choice-1)
+
+            for index, expense in enumerate(total_expenses, start=1):
+                expense["S_No"] = index
+            print("Deleted!")
+            break
+    else:
+        print("S.No not found")
+
+    save_expense()
+#=====================================================================
 
 def show_total():  # Function which help user to show total expenses.
     travel = 0
@@ -127,9 +154,10 @@ def main():  # Main Function
 
     while True:
         print("\n1. Add Expenses")
-        print("2. View all expenses")
+        print("2. Expenses Summary")
         print("3. Show total expenses")
-        print("4. Exit")
+        print("4. Delete expenses")
+        print("5. Exit")
 
         try:
             option = int(input("Choose any one:"))
@@ -138,16 +166,18 @@ def main():  # Main Function
             continue
 
         if option == 1:
-            if add_expense():
-                save_expense()
+            add_expense()
 
         elif option == 2:
-            view_expense()
+            expense_summary()
 
         elif option == 3:
             show_total()
 
         elif option == 4:
+            delete_expense()
+
+        elif option == 5:
             break
 
         else:
