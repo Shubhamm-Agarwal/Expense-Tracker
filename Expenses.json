@@ -18,5 +18,11 @@
         "Category": "shopping",
         "Description": "clothes",
         "Amount": 50000.0
+    },
+    {
+        "Date": "2026-10-12",
+        "Category": "food",
+        "Description": "fries",
+        "Amount": 200.0
     }
 ]
