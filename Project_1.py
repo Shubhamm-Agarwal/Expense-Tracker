@@ -3,6 +3,7 @@
 import json
 from tabulate import tabulate
 import math
+from datetime import datetime
 
 # ===========================================================
 
@@ -35,6 +36,15 @@ def add_expense():  # Function which help user to add expenses.
     categories = ["travel","shopping","food","other"]
 
     while True:
+        date = input("Enter date (YYYY-MM-DD):")
+        try:
+            parsed_date = datetime.strptime(date, "%Y-%m-%d").date()
+            break
+        except ValueError:
+            print("Invalid Date format")
+            return False
+
+    while True:
         category = input("Enter expense category (Food / Travel / Shopping / other):").strip().lower()
         if category in categories:
             break
@@ -50,6 +60,7 @@ def add_expense():  # Function which help user to add expenses.
         print("Invalid Amount")
     else:
         single_expense = {
+            "Date": parsed_date.isoformat(),
             "Category": category,
             "Description": description,
             "Amount": amount,
@@ -61,14 +72,19 @@ def add_expense():  # Function which help user to add expenses.
 # =====================================================================
 
 def view_expense():  # Function which help user to view expenses.
-    headers = ["Category","Description","Amount"]
+    headers = ["Date","Category","Description","Amount"]
     data = []
     
     if total_expenses == []:
         print("No expenses found")
     else:
         for i in total_expenses:
-            item = (i["Category"],i["Description"],i["Amount"])
+            item = (
+                i.get("Date", "N/A"),
+                i["Category"],
+                i["Description"],
+                i["Amount"]
+                )
             data.append(item)
         print(tabulate(data,headers=headers,tablefmt="fancygrid"))
 
