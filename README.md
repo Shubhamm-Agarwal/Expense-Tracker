@@ -7,8 +7,9 @@ The project uses **JSON file storage** to save expense records and displays them
 ## 🚀 Features
 
 - **Add Expenses:** Record expenses with a category, description, and amount.
-- **View Expenses:** Display all recorded expenses in a formatted table.
+- **Expenses Summary:** Display all recorded expenses in a formatted table.
 - **Category-wise Summary:** Calculate expenses for Food, Travel, Shopping, and Other.
+- **Delete Expenses:** Delete expense which ever user wanted to.
 - **JSON Storage:** Save expenses locally and load them when the program restarts.
 - **Input Validation:** Reject invalid categories, negative amounts, zero values, and non-finite numbers.
 - **Error Handling:** Handle invalid inputs and corrupted JSON files.
@@ -61,9 +62,10 @@ python Project_1.py
 
 ```text
 1. Add Expenses
-2. View all expenses
+2. Expenses Summary
 3. Show total expenses
-4. Exit
+4. Delete Expenses
+5. Exit
 ```
 
 ## 📊 Example Expense Summary
