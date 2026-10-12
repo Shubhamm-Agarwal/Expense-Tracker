@@ -8,7 +8,7 @@ The project uses **JSON file storage** to save expense records and displays them
 
 - **Add Expenses:** Record expenses with a category, description, and amount.
 - **Expenses Summary:** Display all recorded expenses in a formatted table.
-- **Category-wise Summary:** Calculate expenses for Food, Travel, Shopping, and Other.
+- **Category-wise total:** Calculate expenses for Food, Travel, Shopping, and Other.
 - **Delete Expenses:** Delete expense which ever user wanted to.
 - **JSON Storage:** Save expenses locally and load them when the program restarts.
 - **Input Validation:** Reject invalid categories, negative amounts, zero values, and non-finite numbers.
