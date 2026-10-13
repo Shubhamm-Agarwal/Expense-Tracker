@@ -93,7 +93,6 @@ def expense_summary():  # Function which help user to view expenses summary.
             data.append(item)
         print(tabulate(data,headers=headers,tablefmt="fancygrid"))
 
-
 # =====================================================================
 
 def delete_expense():
@@ -116,7 +115,108 @@ def delete_expense():
         print("S.No not found")
 
     save_expense()
+
 #=====================================================================
+
+def Search_expenses():
+    while True:
+        print("\n1. Search by category")
+        print("2. Search by date")
+        print("3. Search by amount")
+        print("4. Exit")
+
+        try:
+            choice = int(input("Enter your choice:"))
+        except ValueError:
+            print("Invalid Choice")
+            continue
+
+        if choice == 1:
+            search = input("Search Category:").strip().lower()
+            headers = ["S_No","Date","Category","Description","Amount"]
+            data = []
+
+            for i in total_expenses:
+                if i["Category"] == search:
+                    item = (i["S_No"],
+                            i.get("Date", "N/A"),
+                            i["Category"],
+                            i["Description"],
+                            i["Amount"]
+                            )
+                    data.append(item)
+
+            if data:
+                print(tabulate(data,headers=headers , tablefmt="fancygrid"))
+            else:
+                print("Category not found")
+
+            continue
+
+        elif choice == 2:
+            search = input("Search date (YYYY-MM-DD):").strip()
+            try:
+                datetime.strptime(search, "%Y-%m-%d").date()
+            except ValueError:
+                print("Invalid Date format")
+                continue
+
+            headers = ["S_No","Date","Category","Description","Amount"]
+            data = []
+
+            for i in total_expenses:
+                if i.get("Date") == search:
+                    item = (i["S_No"],
+                            i.get("Date", "N/A"),
+                            i["Category"],
+                            i["Description"],
+                            i["Amount"]
+                            )
+                    data.append(item)
+
+            if data:
+                print(tabulate(data,headers=headers , tablefmt="fancygrid"))
+            else:
+                print("No Expenses found for this date")
+
+            continue
+        
+        elif choice == 3:
+            try:
+                search = float(input("Search Amount:"))
+                if not math.isfinite(search) or search <= 0:
+                    raise ValueError
+            except ValueError:
+                print("Invalid Amount")
+                continue
+
+            headers = ["S_No","Date","Category","Description","Amount"]
+            data = []
+
+            for i in total_expenses:
+                if i["Amount"] <= search:
+                    item = (i["S_No"],
+                            i.get("Date", "N/A"),
+                            i["Category"],
+                            i["Description"],
+                            i["Amount"]
+                            )
+                    data.append(item)
+
+            if data:
+                print(tabulate(data,headers=headers , tablefmt="fancygrid"))
+            else:
+                print("No expenses found within this amount")
+
+            continue
+
+        elif choice == 4:
+            break
+
+        else:
+            print("Invalid Choice")
+
+# ==================================================================
 
 def show_total():  # Function which help user to show total expenses.
     travel = 0
@@ -155,9 +255,10 @@ def main():  # Main Function
     while True:
         print("\n1. Add Expenses")
         print("2. Expenses Summary")
-        print("3. Show total expenses")
-        print("4. Delete expenses")
-        print("5. Exit")
+        print("3. Delete expenses")
+        print("4. Search Expenses")
+        print("5. Show total expenses")
+        print("6. Exit")
 
         try:
             option = int(input("Choose any one:"))
@@ -172,12 +273,15 @@ def main():  # Main Function
             expense_summary()
 
         elif option == 3:
-            show_total()
-
-        elif option == 4:
             delete_expense()
 
+        elif option == 4:
+            Search_expenses()
+
         elif option == 5:
+            show_total()
+
+        elif option == 6:
             break
 
         else:
