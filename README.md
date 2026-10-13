@@ -4,15 +4,17 @@ A command-line Expense Tracker built using **Python** that allows users to recor
 
 The project uses **JSON file storage** to save expense records and displays them in a formatted table.
 
-## 🚀 Features
+## ✨ Features
 
-- **Add Expenses:** Record expenses with a category, description, and amount.
-- **Expenses Summary:** Display all recorded expenses in a formatted table.
-- **Category-wise total:** Calculate expenses for Food, Travel, Shopping, and Other.
-- **Delete Expenses:** Delete expense which ever user wanted to.
-- **JSON Storage:** Save expenses locally and load them when the program restarts.
-- **Input Validation:** Reject invalid categories, negative amounts, zero values, and non-finite numbers.
-- **Error Handling:** Handle invalid inputs and corrupted JSON files.
+- **Add Expense** — Add expenses with date, category, description, and amount.
+- **Expense Summary** — Display all saved expenses in a formatted table.
+- **Delete Expense** — Delete an expense using its serial number.
+- **Search by Category** — Find expenses belonging to a specific category.
+- **Search by Date** — Find expenses recorded on a particular date.
+- **Search by Amount** — Display expenses less than or equal to the entered amount.
+- **Expense total** — View category-wise and total expenses.
+- **JSON Storage** — Automatically save and load expense records.
+- **Input Validation** — Handle invalid dates, categories, amounts, and menu choices.
 
 ## 🛠️ Technologies Used
 
