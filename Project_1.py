@@ -27,12 +27,14 @@ def load_expense():  # Function to load previous expenses.
 # =============================================================
 
 def save_expense(): #Function to save new expenses.
+
     with open("Expenses.json", "w") as f:
         json.dump(total_expenses, f, indent=4)
 
 # ============================================================
 
 def add_expense():  # Function which help user to add expenses.
+    
     S_no = len(total_expenses) + 1
 
     categories = ["travel","shopping","food","other"]
@@ -51,6 +53,7 @@ def add_expense():  # Function which help user to add expenses.
             break
         else:
             print("Invalid Category")
+
     description = input("Enter expense description:")
 
     try:
@@ -95,7 +98,7 @@ def expense_summary():  # Function which help user to view expenses summary.
 
 # =====================================================================
 
-def delete_expense():
+def delete_expense(): # Function which help user to delete expenses.
     while True:
         try:
             choice = int(input("Enter S.no which you want to delete:"))
@@ -118,7 +121,7 @@ def delete_expense():
 
 #=====================================================================
 
-def Search_expenses():
+def Search_expenses(): # Function which help user to search expenses by category,date or amount.
     while True:
         print("\n1. Search by category")
         print("2. Search by date")
