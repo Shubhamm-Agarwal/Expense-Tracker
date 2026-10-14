@@ -1,4 +1,4 @@
-# 💰 Expense Tracker V2
+# 💰 Expense Tracker
 
 A command-line Expense Tracker built using **Python** that allows users to record, manage, and analyze their daily expenses.
 
